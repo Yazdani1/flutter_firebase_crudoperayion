@@ -31,7 +31,7 @@ class _addPostState extends State<addPost> {
                   child: new TextFormField(
                     decoration: InputDecoration(
                         labelText: "Title",
-                      //border: InputBorder.none
+                      border: OutlineInputBorder()
                     ),
                     validator: (val){
                       if(val.isEmpty){
@@ -46,7 +46,8 @@ class _addPostState extends State<addPost> {
                   child: new TextFormField(
                       decoration: InputDecoration(
                           labelText: "Description",
-                        //border: InputBorder.none
+                        border: OutlineInputBorder(),
+
                       ),
                       validator: (val){
                         if(val.isEmpty){
