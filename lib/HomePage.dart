@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
           },
         
         child: new Icon(Icons.add,color: Colors.white,),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.redAccent,
         tooltip: ("Add data"),
         elevation: 10.0,
       ),
