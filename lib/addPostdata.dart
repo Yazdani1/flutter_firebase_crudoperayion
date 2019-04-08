@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_crudoperayion/db/PostService.dart';
+import 'package:flutter_firebase_crudoperayion/models/Post.dart';
 
 
 class addPost extends StatefulWidget {
@@ -7,10 +9,21 @@ class addPost extends StatefulWidget {
 }
 
 class _addPostState extends State<addPost> {
+
+  final GlobalKey<FormState>formkey = new GlobalKey();
+
+  Post post=new Post(0, " ", " ");
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    GlobalKey<FormState>formkey;
+
 
     return new Scaffold(
 
@@ -33,6 +46,7 @@ class _addPostState extends State<addPost> {
                         labelText: "Title",
                       border: OutlineInputBorder()
                     ),
+                    onSaved: (val)=>post.title=val,
                     validator: (val){
                       if(val.isEmpty){
                         return "Add Your Title";
@@ -44,11 +58,12 @@ class _addPostState extends State<addPost> {
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: new TextFormField(
+
                       decoration: InputDecoration(
                           labelText: "Description",
                         border: OutlineInputBorder(),
-
                       ),
+                      onSaved: (val)=>post.body=val,
                       validator: (val){
                         if(val.isEmpty){
                           return "Add Your Description";
@@ -63,12 +78,27 @@ class _addPostState extends State<addPost> {
       ),
 
       floatingActionButton: new FloatingActionButton(
-          onPressed: null,
+          onPressed: (){
+            insertPost();
+          },
         child: new Icon(Icons.add,color: Colors.white,),
         backgroundColor: Colors.green,
       ),
 
     );
   }
+
+  void insertPost(){
+    final FormState formState=formkey.currentState;
+    if(formState.validate()){
+      formState.save();
+      formState.reset();
+      post.date=DateTime.now().millisecondsSinceEpoch;
+      PostService postService=new PostService(post.toMap());
+      postService.addPost();
+    }
+  }
+
+
 }
 
