@@ -11,16 +11,19 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  FirebaseDatabase _database=FirebaseDatabase.instance;
+//  FirebaseDatabase _database=FirebaseDatabase.instance;
+//
+//  String nodename="posts";
 
-  String nodename="posts";
+  DatabaseReference reference=FirebaseDatabase.instance.reference().child("posts");
 
   List<Post>postlist=<Post>[];
 
 
   @override
   void initState() {
-    _database.reference().child(nodename).onChildAdded.listen(_childAdded);
+    //_database.reference().child(nodename).onChildAdded.listen(_childAdded);
+    reference.onChildAdded.listen(_childAdded);
     super.initState();
   }
 
@@ -36,7 +39,7 @@ class _HomeState extends State<Home> {
 
       body: new Container(
             child: FirebaseAnimatedList(
-                query: _database.reference().child("posts"),
+                query: reference,
                 reverse: true,
                 itemBuilder: (BuildContext context,DataSnapshot snap,Animation<double> animation,int index){
                   return new Container(
