@@ -14,11 +14,6 @@ class _addPostState extends State<addPost> {
 
   Post post=new Post(0, " ", " ");
 
-  @override
-  void initState() {
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
