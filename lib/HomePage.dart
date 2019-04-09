@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
   _HomeState createState() => new _HomeState();
 }
 
+
 class _HomeState extends State<Home> {
 
 //  FirebaseDatabase _database=FirebaseDatabase.instance;
@@ -48,7 +49,6 @@ class _HomeState extends State<Home> {
                       elevation: 10.0,
                       child: new Row(
                         children: <Widget>[
-
                           new Container(
                             margin: EdgeInsets.all(5.0),
                             padding: EdgeInsets.all(5.0),
@@ -60,7 +60,6 @@ class _HomeState extends State<Home> {
                           ),
                           new SizedBox(width: 10.0,),
                           new Container(
-
                             child: new Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
@@ -82,9 +81,7 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   );
-
                 }),
-
       ),
       
       floatingActionButton: new FloatingActionButton(
