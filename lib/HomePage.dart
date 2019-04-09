@@ -95,10 +95,10 @@ class _HomeState extends State<Home> {
         tooltip: ("Add data"),
         elevation: 10.0,
       ),
-    
+
     );
   }
-
+  
   _childAdded(Event event) {
     setState(() {
       postlist.add(Post.fromSnapshot(event.snapshot));
