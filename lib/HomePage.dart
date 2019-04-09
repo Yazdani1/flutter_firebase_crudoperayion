@@ -9,8 +9,6 @@ class Home extends StatefulWidget {
   _HomeState createState() => new _HomeState();
 }
 
-
-
 class _HomeState extends State<Home> {
 
 //  FirebaseDatabase _database=FirebaseDatabase.instance;
