@@ -84,9 +84,7 @@ class _HomeState extends State<Home> {
                   );
                 }),
       ),
-
-
-
+      
       floatingActionButton: new FloatingActionButton(
           onPressed: (){
             Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>addPost()));
