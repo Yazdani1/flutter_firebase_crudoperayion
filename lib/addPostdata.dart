@@ -77,15 +77,12 @@ class _addPostState extends State<addPost> {
             insertPost();
             Navigator.of(context).pop();
             Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>Home()));
-
           },
         child: new Icon(Icons.add,color: Colors.white,),
         backgroundColor: Colors.green,
       ),
-
     );
   }
-
   void insertPost(){
     final FormState formState=formkey.currentState;
     if(formState.validate()){
@@ -96,7 +93,5 @@ class _addPostState extends State<addPost> {
       postService.addPost();
     }
   }
-
-
 }
 
