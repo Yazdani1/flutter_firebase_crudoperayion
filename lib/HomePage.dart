@@ -98,7 +98,7 @@ class _HomeState extends State<Home> {
 
     );
   }
-  
+
   _childAdded(Event event) {
     setState(() {
       postlist.add(Post.fromSnapshot(event.snapshot));

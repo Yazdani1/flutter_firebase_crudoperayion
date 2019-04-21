@@ -49,7 +49,6 @@ class _addPostState extends State<addPost> {
                     },
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.all(4.0),
                   child: new TextFormField(
