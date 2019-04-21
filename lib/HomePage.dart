@@ -20,8 +20,6 @@ class _HomeState extends State<Home> {
   DatabaseReference reference=FirebaseDatabase.instance.reference().child("posts");
 
   List<Post>postlist=<Post>[];
-
-
   @override
   void initState() {
     //_database.reference().child(nodename).onChildAdded.listen(_childAdded);
