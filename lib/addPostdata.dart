@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_crudoperayion/db/PostService.dart';
 import 'package:flutter_firebase_crudoperayion/models/Post.dart';
+import 'HomePage.dart';
 
 
 class addPost extends StatefulWidget {
@@ -74,6 +75,9 @@ class _addPostState extends State<addPost> {
       floatingActionButton: new FloatingActionButton(
           onPressed: (){
             insertPost();
+            Navigator.of(context).pop();
+            Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>Home()));
+
           },
         child: new Icon(Icons.add,color: Colors.white,),
         backgroundColor: Colors.green,
