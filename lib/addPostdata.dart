@@ -27,7 +27,6 @@ class _addPostState extends State<addPost> {
         title: new Text("Add Your Post"),
         backgroundColor: Colors.green,
       ),
-
       body: new Container(
         margin: EdgeInsets.all(10.0),
         child: Form(
