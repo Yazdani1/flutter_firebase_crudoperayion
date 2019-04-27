@@ -21,7 +21,7 @@ class Post{
       this.date=snap.value[DATE];
 
   Map toMap(){
-    return{BODY:body,TITLE:title,DATE:date};
+    return{BODY:body,TITLE:title,DATE:date,KEY:key};
   }
 
 }
