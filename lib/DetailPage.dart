@@ -44,7 +44,7 @@ class _DetailPageState extends State<DetailPage> {
                       onPressed: (){
                         PostService postservice=new PostService(widget.post.toMap());
                         postservice.deletepost();
-                        Navigator.of(context).pop();
+
                         Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>Home()));
 
                       }),
