@@ -6,15 +6,17 @@ class PostService{
 
   String nodename="posts";
 
-  FirebaseDatabase database=FirebaseDatabase.instance;
-  DatabaseReference _databaseReference;
+//  FirebaseDatabase database=FirebaseDatabase.instance;
+//  DatabaseReference _databaseReference;
+  
+    DatabaseReference _databaseReference;
 
   Map post;
 
   PostService(this.post);
 
   addPost(){
-    _databaseReference=database.reference().child(nodename);
+    _databaseReference=FirebaseDatabase.instance.reference().child(nodename);
     _databaseReference.push().set(post);
   }
 

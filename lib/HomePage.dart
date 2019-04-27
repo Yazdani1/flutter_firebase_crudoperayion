@@ -3,6 +3,7 @@ import 'package:flutter_firebase_crudoperayion/models/Post.dart';
 import 'addPostdata.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class Home extends StatefulWidget {
   @override
@@ -62,17 +63,28 @@ class _HomeState extends State<Home> {
                             child: new Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
+                                
                                 new Container(
                                   child: new Text(postlist[index].title,
                                     style: TextStyle(fontSize: 20.0,color: Colors.purple),
                                   ),
                                 ),
+
                                 new SizedBox(height: 5.0,),
+
                                 new Container(
                                   child: new Text(postlist[index].body,
                                     style: TextStyle(fontSize: 16.0,color: Colors.black),
                                   ),
                                 ),
+
+                                new SizedBox(height: 5.0,),
+
+                                new Container(
+                                  padding: EdgeInsets.only(bottom:5.0),
+                                  child: new Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(postlist[index].date))),
+                                )
+
                               ],
                             ),
                           )
