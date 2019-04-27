@@ -4,6 +4,7 @@ import 'addPostdata.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'DetailPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -63,11 +64,17 @@ class _HomeState extends State<Home> {
                             child: new Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                
+
                                 new Container(
-                                  child: new Text(postlist[index].title,
-                                    style: TextStyle(fontSize: 20.0,color: Colors.purple),
+                                  child: InkWell(
+                                    child: new Text(postlist[index].title,
+                                      style: TextStyle(fontSize: 20.0,color: Colors.purple),
+                                    ),
+                                    onTap: (){
+                                      Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>DetailPage(postlist[index])));
+                                    },
                                   ),
+
                                 ),
 
                                 new SizedBox(height: 5.0,),
@@ -82,7 +89,12 @@ class _HomeState extends State<Home> {
 
                                 new Container(
                                   padding: EdgeInsets.only(bottom:5.0),
-                                  child: new Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(postlist[index].date))),
+                                  child: new Text(timeago.format(DateTime.fromMillisecondsSinceEpoch(postlist[index].date)),
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.purple
+                                  ),
+                                  ),
                                 )
 
                               ],
@@ -114,5 +126,7 @@ class _HomeState extends State<Home> {
       postlist.add(Post.fromSnapshot(event.snapshot));
     });
   }
+
+
 }
 
