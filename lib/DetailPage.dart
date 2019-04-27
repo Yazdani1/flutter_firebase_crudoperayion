@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_crudoperayion/db/PostService.dart';
 import 'package:flutter_firebase_crudoperayion/models/Post.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'HomePage.dart';
+
 
 class DetailPage extends StatefulWidget {
 
@@ -39,6 +42,10 @@ class _DetailPageState extends State<DetailPage> {
                   new IconButton(
                       icon: new Icon(Icons.delete),
                       onPressed: (){
+                        PostService postservice=new PostService(widget.post.toMap());
+                        postservice.deletepost();
+                        Navigator.of(context).pop();
+                        Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>Home()));
 
                       }),
                   new IconButton(

@@ -23,5 +23,8 @@ class PostService{
     database.reference().child('$nodename/${post['key']}').remove();
   }
 
+  updatepost(){
+    database.reference().child('$nodename/${post['key']}').update(post);
+  }
 
 }

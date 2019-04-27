@@ -11,21 +11,22 @@ class Home extends StatefulWidget {
   _HomeState createState() => new _HomeState();
 }
 
-
-
 class _HomeState extends State<Home> {
 
-//  FirebaseDatabase _database=FirebaseDatabase.instance;
-//
-//  String nodename="posts";
+  FirebaseDatabase _database=FirebaseDatabase.instance;
 
-  DatabaseReference reference=FirebaseDatabase.instance.reference().child("posts");
+  String nodename="posts";
+
+  //DatabaseReference reference=FirebaseDatabase.instance.reference().child("posts");
 
   List<Post>postlist=<Post>[];
+
   @override
   void initState() {
-    //_database.reference().child(nodename).onChildAdded.listen(_childAdded);
-    reference.onChildAdded.listen(_childAdded);
+    _database.reference().child(nodename).onChildAdded.listen(_childAdded);
+    _database.reference().child(nodename).onChildRemoved.listen(_chidRemove);
+
+
     super.initState();
   }
 
@@ -41,8 +42,8 @@ class _HomeState extends State<Home> {
 
       body: new Container(
             child: FirebaseAnimatedList(
-                query: reference,
-                reverse: true,
+                query: _database.reference().child(nodename),
+                reverse: false,
                 itemBuilder: (BuildContext context,DataSnapshot snap,Animation<double> animation,int index){
                   return new Container(
                     margin: EdgeInsets.all(10.0),
@@ -71,7 +72,9 @@ class _HomeState extends State<Home> {
                                       style: TextStyle(fontSize: 20.0,color: Colors.purple),
                                     ),
                                     onTap: (){
+
                                       Navigator.of(context).push(new MaterialPageRoute(builder: (_)=>DetailPage(postlist[index])));
+
                                     },
                                   ),
 
@@ -128,5 +131,14 @@ class _HomeState extends State<Home> {
   }
 
 
+
+  void _chidRemove(Event event) {
+    var deletePost=postlist.singleWhere((post){
+      return post.key==event.snapshot.key;
+    });
+    setState(() {
+      postlist.removeAt(postlist.indexOf(deletePost));
+    });
+  }
 }
 
